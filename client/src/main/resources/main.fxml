@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="rootNode" alignment="CENTER" prefHeight="600.0" prefWidth="400.0"
+      style="-fx-background-color: linear-gradient(#fff 0%, #eee 10%, #ddd 90%, #bbb 100%);"
+      xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.geekbrains.cloud.client.Controller">
+
+
+    <HBox alignment="CENTER_LEFT">
+        <Text text=" Файлы на сервере " textAlignment="CENTER" />
+        <Button onAction="#refreshServerFilesList" text="Обновить" />
+    </HBox>
+    <ListView fx:id="filesListServer" VBox.vgrow="ALWAYS" onMouseClicked="#handleMouseClickServer" />
+    <HBox>
+        <TextField fx:id="tfFileName" focusTraversable="true" promptText="Укажите имя файла на сервере, который хотите скачать/удалить" HBox.hgrow="ALWAYS" />
+        <Button onAction="#pressOnDownloadBtn" text="Скачать" />
+        <Button onAction="#pressOnDeleteServerBtn" text="Удалить" />
+    </HBox>
+    <HBox alignment="CENTER_LEFT">
+        <Text text=" Локальные файлы " textAlignment="CENTER" textOrigin="CENTER" />
+        <Button onAction="#refreshServerFilesList" text="Обновить" />
+    </HBox>
+    <ListView fx:id="filesList" VBox.vgrow="ALWAYS" onMouseClicked="#handleMouseClickLocal" />
+    <HBox>
+        <TextField fx:id="tfFileNameUpload" focusTraversable="true" promptText="Укажите имя файла, который хотите загрузить на сервер" HBox.hgrow="ALWAYS" />
+        <Button onAction="#pressOnUploadBtn" text="Загрузить" />
+        <Button onAction="#pressOnDeleteLocalBtn" text="Удалить" />
+    </HBox>
+</VBox>
