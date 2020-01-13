@@ -1,36 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:id="rootNode" alignment="CENTER" prefHeight="600.0" prefWidth="400.0"
+
+<VBox fx:id="rootNode" alignment="CENTER" minHeight="600.0" minWidth="400.0"
       style="-fx-background-color: linear-gradient(#fff 0%, #eee 10%, #ddd 90%, #bbb 100%);"
       xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.geekbrains.cloud.client.Controller">
 
+    <HBox fx:id="hb10" alignment="TOP_CENTER">
+        <Text text="PD Cloud" textAlignment="CENTER" style="-fx-font: 24 arial;" />
+    </HBox>
 
-    <HBox alignment="CENTER_LEFT">
+    <HBox fx:id="hb11" alignment="CENTER">
+        <Text text="Введите логин:   " textAlignment="CENTER" style="-fx-font: 14 arial;"/>
+        <TextField fx:id="tfLogin" focusTraversable="true" promptText="логин" />
+    </HBox>
+
+    <HBox fx:id="hb12" alignment="CENTER">
+        <Text text="Введите пароль: " textAlignment="CENTER" style="-fx-font: 14 arial;"/>
+        <PasswordField fx:id="pfPass" focusTraversable="true" promptText="пароль" />
+    </HBox>
+
+    <HBox fx:id="hb1" alignment="CENTER_LEFT" >
         <Text text=" Файлы на сервере " textAlignment="CENTER" />
         <Button onAction="#refreshServerFilesList" text="Обновить" />
+        <Region prefHeight="50.0" prefWidth="40.0" HBox.hgrow="ALWAYS" />
+
+            <Label fx:id="labelAuth" text="Пользователь " style="-fx-font-weight: bold"/>
+            <Button onAction="#exitToAuth" text="Выйти" />
+
     </HBox>
+
+
+
+    <HBox fx:id="hb13" alignment="CENTER">
+        <Button onAction="#authorizationBtn" text="Авторизоваться" style="-fx-font: 14 arial;" />
+    </HBox>
+
     <ListView fx:id="filesListServer" VBox.vgrow="ALWAYS" onMouseClicked="#handleMouseClickServer" />
-    <HBox>
+
+
+    <HBox fx:id="hb2" >
         <TextField fx:id="tfFileName" focusTraversable="true" promptText="Укажите имя файла на сервере, который хотите скачать/удалить" HBox.hgrow="ALWAYS" />
         <Button onAction="#pressOnDownloadBtn" text="Скачать" />
         <Button onAction="#pressOnDeleteServerBtn" text="Удалить" />
     </HBox>
-    <HBox alignment="CENTER_LEFT">
-        <Text text=" Локальные файлы " textAlignment="CENTER" textOrigin="CENTER" />
-        <Button onAction="#refreshServerFilesList" text="Обновить" />
+    <HBox fx:id="hb3" alignment="CENTER_LEFT">
+        <Text text="  Локальные файлы " textAlignment="CENTER" textOrigin="CENTER" />
+        <Button onAction="#refreshLocalFilesList" text="Обновить" />
     </HBox>
+
     <ListView fx:id="filesList" VBox.vgrow="ALWAYS" onMouseClicked="#handleMouseClickLocal" />
-    <HBox>
+
+    <HBox fx:id="hb4">
         <TextField fx:id="tfFileNameUpload" focusTraversable="true" promptText="Укажите имя файла, который хотите загрузить на сервер" HBox.hgrow="ALWAYS" />
         <Button onAction="#pressOnUploadBtn" text="Загрузить" />
         <Button onAction="#pressOnDeleteLocalBtn" text="Удалить" />
     </HBox>
+
+    <HBox alignment="BOTTOM_CENTER">
+        <Label fx:id="labelStatus" text="Пользователь не авторизован"/>
+    </HBox>
+
 </VBox>

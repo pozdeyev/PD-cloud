@@ -13,7 +13,7 @@ public class ClientMainClass extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/main.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("PD cloud");
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,400,600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
